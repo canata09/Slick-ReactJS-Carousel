@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React Carousel Example</title>
+  <!-- Slick Carousel CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+  <style>
+    .slick-slide img {
+      width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <!-- Slick Carousel JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+  <!-- React and ReactDOM -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <!-- React Component -->
+  <script type="text/babel">
+    const { useEffect } = React;
+
+    function Carousel() {
+      useEffect(() => {
+        // Ensure jQuery is loaded
+        if (window.$) {
+          $('.carousel').slick({
+            dots: true,
+            infinite: true,
+            speed: 500,
+            slidesToShow: 1,
+            slidesToScroll: 1
+          });
+        }
+      }, []); // Empty dependency array means this effect runs once when the component mounts
+
+      return (
+        <div className="carousel">
+          <div><img src="https://via.placeholder.com/600x300?text=Slide+1" alt="Slide 1" /></div>
+          <div><img src="https://via.placeholder.com/600x300?text=Slide+2" alt="Slide 2" /></div>
+          <div><img src="https://via.placeholder.com/600x300?text=Slide+3" alt="Slide 3" /></div>
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<Carousel />);
+  </script>
+</body>
+</html>
